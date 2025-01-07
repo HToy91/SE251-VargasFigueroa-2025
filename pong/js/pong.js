@@ -14,6 +14,13 @@ p1.w = 20
 p1.h = 150
 p1.x = 0 + p1.w/2
 
+//p2 setup
+var p2 = new Box();
+p2.w = 20
+p2.h = 150
+p2.x = 100//799 - p2.w/2
+p2.color = `green`
+
 //ball setup
 var ball = new Box();
 ball.w = 20
