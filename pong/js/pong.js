@@ -19,7 +19,7 @@ p1.color = `red`
 var p2 = new Box();
 p2.w = 20
 p2.h = 150
-p2.x = 800 - p2.w/2
+p2.x = c.width - p2.w/2
 p2.color = `green`
 
 //ball setup
