@@ -13,7 +13,7 @@ player[0] = new Player()
 player[1] = new Player()
  
 //p1 setup
-var p1 = new Box();
+var p1 = new Box()
 p1.w = 20
 p1.h = 150
 p1.x = 0 + p1.w/2
