@@ -26,10 +26,10 @@ class Box{
         ctx.fillRect(this.x,this.y,this.w,this.h);
     }
 }
-var p1 = new Box()
-var p2 = new Box()
-p2.color = `green`
-p2.y=300
+var pad[0] = new Box()
+var pad[1] = new Box()
+pad[1].color = `green`
+pad[1].y=300
 
 
 
@@ -58,11 +58,11 @@ function main()
 {
     ctx.clearRect(0,0, c.width, c.height)
     
-    if(a)p1.x+=-p1.vx;
-    if(d)p1.x+=p1.vx;
-    if(arrowLeft)p2.x+=-p2.vx;
-    if(arrowRight)p2.x+=p2.vx;
+    if(a)pad[0].x+=-pad[0].vx;
+    if(d)pad[0].x+=pad[0].vx;
+    if(arrowLeft)pad[1].x+=-pad[1].vx;
+    if(arrowRight)pad[1].x+=pad[1].vx;
 
-    p1.draw()
-    p2.draw()
+    pad[0].draw()
+    pad[1].draw()
 }
