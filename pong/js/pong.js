@@ -8,19 +8,21 @@ var timer = setInterval(main, 1000/60)
 //global friction variable
 var fy = .97
 
-var player = []
-player[0] = new Player()
-player[1] = new Player()
+let player = [];
+var player1 = new Player();
+var player2 = new Player()
+player[0] = player1
+player[1] = player2
  
 //p1 setup
-var p1 = new Box()
+var p1 = player1.pad
 p1.w = 20
 p1.h = 150
 p1.x = 0 + p1.w/2
 p1.color = `red`
 
 //p2 setup
-var p2 = new Box();
+var p2 = player2.pad;
 p2.w = 20
 p2.h = 150
 p2.x = c.width - p2.w/2
