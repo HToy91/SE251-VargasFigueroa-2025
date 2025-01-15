@@ -8,6 +8,10 @@ var timer = setInterval(main, 1000/60)
 //global friction variable
 var fy = .97
 
+
+var player1Score = 0
+var player2Score = 0
+
 let player = [];
 let pad = []
 
@@ -133,6 +137,21 @@ function main()
     {
         ball.x = pad[1].x - pad[1].w/2 - ball.w/2
         ball.vx = -ball.vx
+    }
+
+    //scoring
+    if(ball.x == 0)
+    {
+        player2Score += 1
+        console.clear()
+        console.log(`${player1Score} | ${player2Score}`)
+    }
+    if(ball.x == 800)
+    {
+        player1Score += 1
+        console.clear()
+        console.log(`${player1Score} | ${player2Score}`)
+
     }
 
     //draw the objects
