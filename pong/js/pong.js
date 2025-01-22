@@ -14,6 +14,7 @@ var player2Score = 0
 
 let player = [];
 let pad = []
+var playerScore = [0,0]
 
 player[0] = new Player();
 player[1] = new Player()
@@ -67,13 +68,7 @@ function main()
         pad[1].vy += pad[1].force
     }
 
-    //applies friction
-    pad[0].vy *= fy
-    pad[1].vy *= fy
-    //player movement
-    pad[0].move();
-    pad[1].move();
-
+    
     //ball movement
     ball.move()
 
@@ -101,16 +96,7 @@ function main()
 
     //ball collision 
     //resets ball if collision with either side
-    if(ball.x < 0 || ball.x > 800)
-    {
-        ball.x = c.width/2
-        ball.y  =c.height/2
-    }
-    if(ball.x > c.width)
-    {
-        ball.x = c.width
-        ball.vx = -ball.vx
-    }
+
     //top collision and returns ball in opposite direction
     if(ball.y < 0)
     {
@@ -140,22 +126,48 @@ function main()
     }
 
     //scoring
-    if(ball.x == 0)
-    {
-        player2Score += 1
-        console.clear()
-        console.log(`${player1Score} | ${player2Score}`)
-    }
-    if(ball.x == 800)
-    {
-        player1Score += 1
-        console.clear()
-        console.log(`${player1Score} | ${player2Score}`)
+    // let redPointsElement = document.querySelector(`#red-score`)
+    // let greenPointsElement = document.querySelector(`#green-score`)
+    // let redPoints = parseInt(redPointsElement.textContent, 10) || 0
+    // let greenPoints = parseInt(greenPointsElement.textContent, 10) || 0
+    let score = document.querySelectorAll(`#score div`)
 
+
+    for (let i = 0;i < score.length;i++)
+    {
+            //applies friction
+        pad[i].vy *= fy
+        //player movement
+        pad[i].move();
+
+        if(ball.x < 0)
+        {
+            playerScore[1] += 1
+            ball.x = c.width / 2
+            // greenPoints += 1
+            // greenPointsElement.textContent = greenPoints
+            
+            console.clear()
+            console.log(`${playerScore[0]} | ${playerScore[1]}`)
+        }
+        if(ball.x > 800)
+        {
+            playerScore[0] += 1
+            ball.x = c.width / 2
+            // redPoints += 1
+            // redPointsElement.textContent = redPoints
+            
+            console.clear()
+            console.log(`${playerScore[0]} | ${playerScore[1]}`)
+
+        }   
+        score[i].textContent = playerScore[i]
+        
+        pad[i].draw()
     }
+   
 
     //draw the objects
-    pad[0].draw()
+    
     ball.draw()
-    pad[1].draw()
 }
