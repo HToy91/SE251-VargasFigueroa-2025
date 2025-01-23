@@ -7,7 +7,6 @@ document.addEventListener(`keydown`, (e)=>{
     //console.log(e.key)
 })
 
-
 //keyup code
 document.addEventListener(`keyup`, (e)=>{
     keys[e.key]=false;

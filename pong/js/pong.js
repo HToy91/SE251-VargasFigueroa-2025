@@ -8,7 +8,6 @@ var timer = setInterval(main, 1000/60)
 //global friction variable
 var fy = .97
 
-
 var player1Score = 0
 var player2Score = 0
 
@@ -68,34 +67,8 @@ function main()
         pad[1].vy += pad[1].force
     }
 
-    
     //ball movement
     ball.move()
-
-    //pad[0] collision
-    // if(pad[0].y < 0+pad[0].h/2)
-    // {
-    //     pad[0].y = 0+pad[0].h/2
-    // }
-    // if(pad[0].y > c.height-pad[0].h/2)
-    // {
-    //     pad[0].y = c.height-pad[0].h/2
-    // }
-
-    // //pad[1] collision
-    // //prevents bar from passing top
-    // if(pad[1].y < 0+pad[1].h/2)
-    // {
-    //     pad[1].y = 0+pad[0].h/2
-    // }
-    // //prevents bar from passing bottom
-    // if(pad[1].y > c.height-pad[1].h/2)
-    // {
-    //     pad[1].y = c.height-pad[1].h/2
-    // }
-
-    //ball collision 
-    //resets ball if collision with either side
 
     //top collision and returns ball in opposite direction
     if(ball.y < 0)
@@ -108,7 +81,6 @@ function main()
     {
         ball.y = c.height
         ball.vy = -ball.vy
-       
     }
 
     //pad[0] with ball collision
@@ -132,7 +104,6 @@ function main()
     // let greenPoints = parseInt(greenPointsElement.textContent, 10) || 0
     let score = document.querySelectorAll(`#score div`)
 
-
     for (let i = 0;i < score.length;i++)
     {
         //pad collision
@@ -145,7 +116,7 @@ function main()
                 pad[i].y = c.height-pad[i].h/2
             }
 
-            //applies friction
+        //applies friction
         pad[i].vy *= fy
         //player movement
         pad[i].move();
@@ -156,7 +127,6 @@ function main()
             ball.x = c.width / 2
             // greenPoints += 1
             // greenPointsElement.textContent = greenPoints
-            
             console.clear()
             console.log(`${playerScore[0]} | ${playerScore[1]}`)
         }
@@ -166,18 +136,13 @@ function main()
             ball.x = c.width / 2
             // redPoints += 1
             // redPointsElement.textContent = redPoints
-            
             console.clear()
             console.log(`${playerScore[0]} | ${playerScore[1]}`)
-
         }   
         score[i].textContent = playerScore[i]
-        
+
+        //draw the objects
         pad[i].draw()
     }
-   
-
-    //draw the objects
-    
     ball.draw()
 }

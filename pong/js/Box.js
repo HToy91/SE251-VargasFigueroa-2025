@@ -45,5 +45,4 @@ class Box
         }
         return false
     }
-
 }
