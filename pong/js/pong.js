@@ -73,26 +73,26 @@ function main()
     ball.move()
 
     //pad[0] collision
-    if(pad[0].y < 0+pad[0].h/2)
-    {
-        pad[0].y = 0+pad[0].h/2
-    }
-    if(pad[0].y > c.height-pad[0].h/2)
-    {
-        pad[0].y = c.height-pad[0].h/2
-    }
+    // if(pad[0].y < 0+pad[0].h/2)
+    // {
+    //     pad[0].y = 0+pad[0].h/2
+    // }
+    // if(pad[0].y > c.height-pad[0].h/2)
+    // {
+    //     pad[0].y = c.height-pad[0].h/2
+    // }
 
-    //pad[1] collision
-    //prevents bar from passing top
-    if(pad[1].y < 0+pad[1].h/2)
-    {
-        pad[1].y = 0+pad[0].h/2
-    }
-    //prevents bar from passing bottom
-    if(pad[1].y > c.height-pad[1].h/2)
-    {
-        pad[1].y = c.height-pad[1].h/2
-    }
+    // //pad[1] collision
+    // //prevents bar from passing top
+    // if(pad[1].y < 0+pad[1].h/2)
+    // {
+    //     pad[1].y = 0+pad[0].h/2
+    // }
+    // //prevents bar from passing bottom
+    // if(pad[1].y > c.height-pad[1].h/2)
+    // {
+    //     pad[1].y = c.height-pad[1].h/2
+    // }
 
     //ball collision 
     //resets ball if collision with either side
@@ -135,6 +135,16 @@ function main()
 
     for (let i = 0;i < score.length;i++)
     {
+        //pad collision
+        if(pad[i].y < 0+pad[i].h/2)
+            {
+                pad[i].y = 0+pad[i].h/2
+            }
+            if(pad[i].y > c.height-pad[i].h/2)
+            {
+                pad[i].y = c.height-pad[i].h/2
+            }
+
             //applies friction
         pad[i].vy *= fy
         //player movement
