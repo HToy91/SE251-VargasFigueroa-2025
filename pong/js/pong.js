@@ -107,7 +107,7 @@ function main()
     for (let i = 0;i < score.length;i++)
     {
         //pad collision
-        if(pad[i].y < 0+pad[i].h/2)
+        if(pad[i].y < 0 + pad[i].h/2)
             {
                 pad[i].y = 0+pad[i].h/2
             }
@@ -121,9 +121,13 @@ function main()
         //player movement
         pad[i].move();
 
+        //AI tracking for player 2
+        var dy = ball.y - pad[1].y
+        pad[1].vy = dy * .05
+
         if(ball.x < 0)
         {
-            playerScore[1] += 1
+            playerScore[1] ++
             ball.x = c.width / 2
             // greenPoints += 1
             // greenPointsElement.textContent = greenPoints
@@ -132,7 +136,7 @@ function main()
         }
         if(ball.x > 800)
         {
-            playerScore[0] += 1
+            playerScore[0] ++
             ball.x = c.width / 2
             // redPoints += 1
             // redPointsElement.textContent = redPoints
