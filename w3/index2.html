@@ -11,7 +11,7 @@
     <!-- <input type="number" placeholder="a">
     +
     <input type="number" placeholder="b"> -->
-    <input type="range" min="0" max="255" value="255">
+    <input type="color" min="0" max="255" value="#ff9900">
     <input type="range" min="0" max="255">
     <input type="range" min="0" max="255">
     <!-- <button>Submit</button> -->
@@ -20,8 +20,10 @@
         var input = document.querySelectorAll(`input`)
         var button = document.querySelector(`button`)
 
+        div.style.backgroundColor = input[0].value
+
         input[0].addEventListener(`input`, (e)=>{
-            div.style.backgroundColor = `rgb(${input[0].value},0,0)`
+            div.style.backgroundColor = input[0].value
             div.innerText = `rgb(${input[0].value},0,0)`
         })
 
