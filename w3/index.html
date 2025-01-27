@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Div Me</button>
+
+    <script>
+        class Div
+        {
+            constructor(obj)
+            {
+                this.bg = `red`
+                this.w = 200
+                this.h = 200
+
+                for(let i in obj)
+                {
+                    if(this[i] != undefined)
+                    {
+                        this[i] = obj[i]
+                    }
+                }
+            }
+
+            create(_parent = document.querySelector(`body`))
+            {
+                var div = document.createElement(`div`);
+                div.style.backgroundColor = this.bg;
+                div.style.width = this.w + `px`;
+                div.style.height = this.h + `px`;
+                _parent.appendChild(div)
+            }
+        }
+        var button = document.querySelector(`button`)
+        var div = new Div({bg: `green`, w:50});
+        button.addEventListener(`click`, (e)=> {div.create(document.querySelector(`button`))})
+    </script>
+    
+</body>
+</html>

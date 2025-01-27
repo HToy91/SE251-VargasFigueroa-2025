@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Hello World</div>
+    <!-- <input type="number" placeholder="a">
+    +
+    <input type="number" placeholder="b"> -->
+    <input type="range" min="0" max="255" value="255">
+    <input type="range" min="0" max="255">
+    <input type="range" min="0" max="255">
+    <!-- <button>Submit</button> -->
+    <script>
+        var div = document.querySelector(`div`)
+        var input = document.querySelectorAll(`input`)
+        var button = document.querySelector(`button`)
+
+        input[0].addEventListener(`input`, (e)=>{
+            div.style.backgroundColor = `rgb(${input[0].value},0,0)`
+            div.innerText = `rgb(${input[0].value},0,0)`
+        })
+
+        // button.addEventListener(`click`, (e)=>{
+        //     div.innerText = Number(input[0].value) + Number(input[1].value)
+        // })
+
+        /*button.addEventListener(`click`, (e)=>{div.innerText = input.value})
+        input.addEventListener(`input`, (e)=>{div.innerText = input.value})
+        input.addEventListener(`change`, (e)=>{div.style.fontSize = input.value + `px`})
+        input.addEventListener(`focus`, (e)=>{div.style.backgroundColor = `green`})
+        input.addEventListener(`blur`, (e)=>{div.style.backgroundColor = `red`})*/
+        
+    </script>
+</body>
+</html>
