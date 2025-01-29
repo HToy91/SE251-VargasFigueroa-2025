@@ -122,8 +122,8 @@ function main()
         pad[i].move();
 
         //AI tracking for player 2
-        var dy = ball.y - pad[1].y
-        pad[1].vy = dy * .05
+        // var dy = ball.y - pad[1].y
+        // pad[1].vy = dy * .05
 
         if(ball.x < 0)
         {
