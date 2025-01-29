@@ -1,11 +1,13 @@
+var optionsButton = document.querySelector(`button`)
+var sides = document.querySelector(`.sides`)
+var fill = document.querySelectorAll(`.fill`)
+var output = document.querySelectorAll(`.output`)
+var input = document.querySelectorAll(`input`)
 /*--------
     Make the Options Button 
     . on click
     . show or hide the `.sides` div
 ---------*/
-var optionsButton = document.querySelector(`button`)
-var sides = document.querySelector(`.sides`)
-
 optionsButton.addEventListener(`click`, (e)=>{
     sides.classList.toggle(`hidden`)
 })
@@ -19,18 +21,24 @@ optionsButton.addEventListener(`click`, (e)=>{
         . Show the fill's hex code in the output div 
 
 -----------*/
-var input = document.querySelectorAll(`.fill`)
-var output = document.querySelectorAll(`.output`)
 
-for(let i = 0; i < input.length; i++)
+for(let i = 0; i < fill.length; i++)
     {
-        pad[i].color = input[i].value
-
-        input[i].addEventListener(`input`, (e)=>{
-            pad[i].color = input[i].value
-            output[i].textContent = input[i].value
-        })
+        pad[i].color = fill[i].value
     }
+
+fill[0].addEventListener(`input`, (e)=>{
+    pad[0].color = fill[0].value
+    output[0].textContent = fill[0].value
+    output[0].textContent = fill[0].value
+})
+fill[1].addEventListener(`input`, (e)=>{
+    pad[1].color = fill[1].value
+    output[6].textContent = fill[1].value
+    output[6].textContent = fill[1].value
+})
+
+    
 
 /*---------
     Program the six key inputs to do the following:
@@ -40,3 +48,8 @@ for(let i = 0; i < input.length; i++)
         .Change the player's key to the value of the input
         .Show the player's key in the output div 
 -----------*/
+output[2].innerHTML = player[0].keys[`u`]
+output[3].innerHTML = player[0].keys[`d`]
+input[2].value = player[0].keys[`u`]
+input[3].value = player[0].keys[`d`]
+
