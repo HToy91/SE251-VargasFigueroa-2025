@@ -15,6 +15,9 @@ let player = [];
 let pad = []
 var playerScore = [0,0]
 
+var states = []
+var timer, currentState
+
 player[0] = new Player();
 player[1] = new Player()
 
@@ -42,31 +45,20 @@ ball.vx = -2
 ball.vy = -2
 ball.color = `blue`
 
+states[`pause`] = function(){
+    o.forEach(function (i){
+        i.draw()
+    })
+    if(keys[`Escape`])
+    {
+        currentState =`game`
+    }
+   
+}
 function main()
 {
     //erases the canvas
     ctx.clearRect(0,0,c.width,c.height)
-    
-    //pad[0] accelerates when key is pressed 
-    // if(keys[`w`])
-    // {
-    //    pad[0].vy += -pad[0].force
-    // }
-
-    // if(keys[`s`])
-    // {
-    //     pad[0].vy += pad[0].force
-    // }
-
-    // //pad[1] accelerates when key is pressed
-    // if(keys[`ArrowUp`])
-    // {
-    //     pad[1].vy += -pad[1].force
-    // }
-    // if(keys[`ArrowDown`])
-    // {
-    //     pad[1].vy += pad[1].force
-    // }
 
     //ball movement
     ball.move()
@@ -97,12 +89,6 @@ function main()
         ball.x = pad[1].x - pad[1].w/2 - ball.w/2
         ball.vx = -ball.vx
     }
-
-    //scoring
-    // let redPointsElement = document.querySelector(`#red-score`)
-    // let greenPointsElement = document.querySelector(`#green-score`)
-    // let redPoints = parseInt(redPointsElement.textContent, 10) || 0
-    // let greenPoints = parseInt(greenPointsElement.textContent, 10) || 0
     let score = document.querySelectorAll(`#score div`)
 
     for (let i = 0;i < score.length;i++)
@@ -138,8 +124,6 @@ function main()
         {
             playerScore[1] ++
             ball.x = c.width / 2
-            // greenPoints += 1
-            // greenPointsElement.textContent = greenPoints
             console.clear()
             console.log(`${playerScore[0]} | ${playerScore[1]}`)
         }
@@ -147,8 +131,6 @@ function main()
         {
             playerScore[0] ++
             ball.x = c.width / 2
-            // redPoints += 1
-            // redPointsElement.textContent = redPoints
             console.clear()
             console.log(`${playerScore[0]} | ${playerScore[1]}`)
         }   
