@@ -27,6 +27,7 @@ pad[0].x = 0 + pad[0].w/2
 pad[0].color = `red`
 
 //pad[1] setup
+player[1].keys = {u: `ArrowUp`, d: `ArrowDown`, s: 'd'}
 pad[1] = player[1].pad;
 pad[1].w = 20
 pad[1].h = 150
@@ -47,25 +48,25 @@ function main()
     ctx.clearRect(0,0,c.width,c.height)
     
     //pad[0] accelerates when key is pressed 
-    if(keys[`w`])
-    {
-       pad[0].vy += -pad[0].force
-    }
+    // if(keys[`w`])
+    // {
+    //    pad[0].vy += -pad[0].force
+    // }
 
-    if(keys[`s`])
-    {
-        pad[0].vy += pad[0].force
-    }
+    // if(keys[`s`])
+    // {
+    //     pad[0].vy += pad[0].force
+    // }
 
-    //pad[1] accelerates when key is pressed
-    if(keys[`ArrowUp`])
-    {
-        pad[1].vy += -pad[1].force
-    }
-    if(keys[`ArrowDown`])
-    {
-        pad[1].vy += pad[1].force
-    }
+    // //pad[1] accelerates when key is pressed
+    // if(keys[`ArrowUp`])
+    // {
+    //     pad[1].vy += -pad[1].force
+    // }
+    // if(keys[`ArrowDown`])
+    // {
+    //     pad[1].vy += pad[1].force
+    // }
 
     //ball movement
     ball.move()
@@ -106,6 +107,14 @@ function main()
 
     for (let i = 0;i < score.length;i++)
     {
+        if(keys[player[i].keys.u])
+            {
+               pad[i].vy += -pad[i].force
+            }
+        if(keys[player[i].keys.d])
+            {
+                pad[i].vy += pad[i].force
+            }
         //pad collision
         if(pad[i].y < 0 + pad[i].h/2)
             {

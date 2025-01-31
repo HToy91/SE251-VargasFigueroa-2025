@@ -1,8 +1,11 @@
 var optionsButton = document.querySelector(`button`)
 var sides = document.querySelector(`.sides`)
 var fill = document.querySelectorAll(`.fill`)
-var output = document.querySelectorAll(`.output`)
-var input = document.querySelectorAll(`input`)
+var fOutput = document.querySelectorAll(`.fOutput`)
+var u = document.querySelectorAll(`.u`)
+var d = document.querySelectorAll(`.d`)
+var uOutput = document.querySelectorAll(`.uOutput`)
+var dOutput = document.querySelectorAll(`.dOutput`)
 /*--------
     Make the Options Button 
     . on click
@@ -25,20 +28,13 @@ optionsButton.addEventListener(`click`, (e)=>{
 for(let i = 0; i < fill.length; i++)
     {
         pad[i].color = fill[i].value
-    }
+        fOutput[i].textContent = pad[i].color
 
-fill[0].addEventListener(`input`, (e)=>{
-    pad[0].color = fill[0].value
-    output[0].textContent = fill[0].value
-    output[0].textContent = fill[0].value
+        fill[i].addEventListener(`input`, (e)=>{
+        pad[i].color = fill[i].value
+        fOutput[i].textContent = fill[i].value
 })
-fill[1].addEventListener(`input`, (e)=>{
-    pad[1].color = fill[1].value
-    output[6].textContent = fill[1].value
-    output[6].textContent = fill[1].value
-})
-
-    
+    }  
 
 /*---------
     Program the six key inputs to do the following:
@@ -48,8 +44,20 @@ fill[1].addEventListener(`input`, (e)=>{
         .Change the player's key to the value of the input
         .Show the player's key in the output div 
 -----------*/
-output[2].innerHTML = player[0].keys[`u`]
-output[3].innerHTML = player[0].keys[`d`]
-input[2].value = player[0].keys[`u`]
-input[3].value = player[0].keys[`d`]
 
+for(let i = 0; i <u.length; i++)
+{
+    u[i].value = player[i].keys[`u`]
+    d[i].value = player[i].keys[`d`]
+    uOutput[i].innerHTML = u[i].value
+    dOutput[i].innerHTML = d[i].value
+
+    u[i].addEventListener(`change`, (e)=>{
+        player[i].keys.u = u[i].value
+        uOutput[i].innerHTML = player[i].keys[`u`]
+    })
+    d[i].addEventListener(`change`, (e)=>{
+        player[i].keys.d = d[i].value
+        dOutput[i].innerHTML = player[i].keys[`d`]
+    })
+}
