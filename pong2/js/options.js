@@ -30,15 +30,26 @@ var sOutput = document.querySelectorAll(`.s + .output`)
 var d = document.querySelectorAll(`.d`)
 var dOutput = document.querySelectorAll(`.d + .output`)
 
+var stroke = document.querySelectorAll(`.stroke`)
+var strokeOutput = document.querySelectorAll(`.stroke + .output`)
+
 var input = document.querySelectorAll(`input`)//tried to pause for each input didn't work
 
 for(let i=0;i<input.length;i++){
     o[i].fill = fill[i].value
     fillOutput[i].textContent = o[i].fill
 
+    o[i].stroke = stroke[i].value
+    strokeOutput[i].textContent = o[i].stroke
+
     fill[i].addEventListener(`input`, (e)=>{
         o[i].fill = fill[i].value
         fillOutput[i].textContent = o[i].fill
+    })
+
+    stroke[i].addEventListener(`input`, (e)=>{
+        o[i].stroke = stroke[i].value
+        strokeOutput[i].textContent = o[i].stroke
     })
 
     /*---------
