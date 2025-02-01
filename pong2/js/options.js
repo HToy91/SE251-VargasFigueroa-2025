@@ -35,6 +35,10 @@ var strokeOutput = document.querySelectorAll(`.stroke + .output`)
 
 var input = document.querySelectorAll(`input`)//tried to pause for each input didn't work
 
+var canvas = document.querySelector(`.canvas`)
+var canvasOutput = document.querySelector(`.canvas + .output`)
+var body = document.querySelector(`body`)
+
 for(let i=0;i<input.length;i++){
     o[i].fill = fill[i].value
     fillOutput[i].textContent = o[i].fill
@@ -94,5 +98,13 @@ for(let i=0;i<input.length;i++){
     })
     s[i].addEventListener(`focus`, (e)=>{
         currentState = `pause`
+    })
+
+    canvas.value = body.style.backgroundColor
+    canvasOutput.innerHTML = canvas.value
+
+    canvas.addEventListener(`input`, (e)=>{
+        body.style.backgroundColor = canvas.value
+        canvasOutput.textContent = body.style.backgroundColor
     })
 }

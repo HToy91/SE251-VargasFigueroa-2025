@@ -5,7 +5,7 @@ body{
     margin:0;
     display:flex; 
     justify-content: center;
-    background-color: rgb(0,0,0);
+    background-color: #000000;
 }
 main{
     color:white;
@@ -33,7 +33,7 @@ canvas{
 #options{
     margin-left:24px;
 }
-#options h2{
+#options h2, .h2-2{
     cursor:pointer;
 }
 
