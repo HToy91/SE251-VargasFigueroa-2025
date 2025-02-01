@@ -82,6 +82,17 @@ states[`game`] = function()
         ball.y = sides.bottom - ball.h/2;
         ball.vy = -ball.vy;
     }
+    if(ball.y < 0)
+        {
+            ball.y = 0
+            ball.vy = -ball.vy
+        }
+        //bottom collision
+        if(ball.y > c.height)
+        {
+            ball.y = c.height
+            ball.vy = -ball.vy
+        }
 
     for(let i=0; i<pad.length; i++)
     {

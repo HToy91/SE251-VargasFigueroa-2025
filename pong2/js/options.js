@@ -19,9 +19,20 @@ options.addEventListener(`click`,(e)=>{
 
 -----------*/
 var fill = document.querySelectorAll(`.fill`)
-var fillOutput = document.querySelectorAll(`.fill + div`)
+var fillOutput = document.querySelectorAll(`.fill + .output`)
 
-for(let i=0;i<o.length;i++){
+var u = document.querySelectorAll(`.u`)
+var uOutput = document.querySelectorAll(`.u + .output`)
+
+var s = document.querySelectorAll(`.s`)
+var sOutput = document.querySelectorAll(`.s + .output`)
+
+var d = document.querySelectorAll(`.d`)
+var dOutput = document.querySelectorAll(`.d + .output`)
+
+var input = document.querySelectorAll(`input`)//tried to pause for each input didn't work
+
+for(let i=0;i<input.length;i++){
     o[i].fill = fill[i].value
     fillOutput[i].textContent = o[i].fill
 
@@ -29,9 +40,8 @@ for(let i=0;i<o.length;i++){
         o[i].fill = fill[i].value
         fillOutput[i].textContent = o[i].fill
     })
-}
 
-/*---------
+    /*---------
     Program the six key inputs to do the following:
     . Display the correct key names for each player   
     . using a `keydown` event
@@ -39,12 +49,39 @@ for(let i=0;i<o.length;i++){
         .Change the player's key to the value of the input
         .Show the player's key in the output div 
 -----------*/
-var u = document.querySelectorAll(`.u`)
-var d = document.querySelectorAll(`.d`)
-var s = document.querySelectorAll(`.s`)
+    u[i].value = player[i].keys[`u`]
+    uOutput[i].innerHTML = u[i].value
 
-for(let i=0;i<o.keys.length;i++){
-    u.document.addEventListener(`keydown`,(e)=>{
-        u[i].value = o[i].keys[`u`]
+    d[i].value = player[i].keys[`d`]
+    dOutput[i].innerHTML = d[i].value
+
+    s[i].value = player[i].keys[`s`]
+    sOutput[i].innerHTML = s[i].value
+
+    u[i].addEventListener(`keydown`, (e)=>{
+        u[i].value = e.key
+        player[i].keys.u = u[i].value
+        uOutput[i].innerHTML = player[i].keys[`u`]
+    })
+    u[i].addEventListener(`focus`, (e)=>{
+        currentState = `pause`
+    })
+
+    d[i].addEventListener(`keydown`, (e)=>{
+        d[i].value = e.key
+        player[i].keys.d = d[i].value
+        dOutput[i].innerHTML = player[i].keys[`d`]
+    })
+    d[i].addEventListener(`focus`, (e)=>{
+        currentState = `pause`
+    })
+
+    s[i].addEventListener(`keydown`, (e)=>{
+        s[i].value = e.key
+        player[i].keys.s = s[i].value
+        sOutput[i].innerHTML = player[i].keys[`s`]
+    })
+    s[i].addEventListener(`focus`, (e)=>{
+        currentState = `pause`
     })
 }
