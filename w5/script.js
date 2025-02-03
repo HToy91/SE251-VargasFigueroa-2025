@@ -3,7 +3,7 @@ function $(_element){
     return (e.length > 1)?e:e[0]
 }
 
-$(`button`).addEventListener(`click`, e=>{
+$(`button`)[0].addEventListener(`click`, e=>{
     let post = document.createElement(`div`)
     //give the post a .post class
     post.setAttribute(`class`, `post`)
@@ -21,6 +21,11 @@ $(`button`).addEventListener(`click`, e=>{
     //add the div to the output
     $(`#output`).appendChild(post)
 
+    let checkBox = document.createElement(`input`)
+    checkBox.setAttribute(`type`, `checkbox`)
+    checkBox.setAttribute(`class`, `hidden`)
+    post.appendChild(checkBox)
+
     // var arr = []
     // Array.from($(`.post`)).forEach((value)=>{//post is nodeList, turns it into array to use forEach
     //     arr.push(value.outerHTML)
@@ -29,6 +34,10 @@ $(`button`).addEventListener(`click`, e=>{
     var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
     // console.log(JSON.stringify(arr))
     localStorage.setItem(`posts`, JSON.stringify(arr))
+})
+
+$(`button`)[1].addEventListener(`click`, e=>{
+    
 })
 
 $(`#output`).innerHTML = JSON.parse(localStorage.getItem(`posts`)) //posts local storage to output
