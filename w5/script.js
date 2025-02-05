@@ -24,22 +24,46 @@ $(`button`)[0].addEventListener(`click`, e=>{
     let checkBox = document.createElement(`input`)
     checkBox.setAttribute(`type`, `checkbox`)
     checkBox.setAttribute(`class`, `hidden`)
-    post.appendChild(checkBox)
-
+    post.prepend(checkBox)//puts check box at the beginning of div
+    savePosts()
     // var arr = []
     // Array.from($(`.post`)).forEach((value)=>{//post is nodeList, turns it into array to use forEach
     //     arr.push(value.outerHTML)
     // })
     // console.log(arr)
-    var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
-    // console.log(JSON.stringify(arr))
-    localStorage.setItem(`posts`, JSON.stringify(arr))
+    // var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
+    // // console.log(JSON.stringify(arr))
+    // localStorage.setItem(`posts`, JSON.stringify(arr))
+    savePosts()
 })
 
 $(`button`)[1].addEventListener(`click`, e=>{
-    
+    Array.from($(`.post input[type="checkbox"]`)).map(checkBox=>checkBox.classList.toggle(`hidden`)
+    )
+    $(`button`)[2].classList.toggle(`hidden`)
+    $(`button`)[3].classList.toggle(`hidden`)
 })
 
+$(`button`)[2].addEventListener(`click`, e=>{
+    let checkboxes = Array.from($(`.post input[type="checkbox"]`))
+    let allChecked = checkboxes.every(checkBox=>checkBox.checked)
+    
+    //toggle to opposite state(selected or unselected)
+    checkboxes.map(checkBox=>checkBox.checked = !allChecked)
+
+    // update button text
+    $(`button`)[2].textContent = allChecked? `Select All` : `Unselect All`
+})
+
+$(`button`)[3].addEventListener(`click`, e=>{
+    Array.from($(`.post`)).filter(post=>post.querySelector(`input[type="checkbox"]:checked`)).map(post=>post.remove())
+    savePosts()
+})
+function savePosts(){
+        var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
+        localStorage.setItem(`posts`, JSON.stringify(arr))
+        
+    }
 $(`#output`).innerHTML = JSON.parse(localStorage.getItem(`posts`)) //posts local storage to output
 
 
