@@ -2,7 +2,7 @@ function $(_element){
     let e = document.querySelectorAll(_element)// ex: var legal = (age > 18)?True:False
     return (e.length > 1)?e:e[0]
 }
-
+//add
 $(`button`)[0].addEventListener(`click`, e=>{
     let post = document.createElement(`div`)
     //give the post a .post class
@@ -36,14 +36,14 @@ $(`button`)[0].addEventListener(`click`, e=>{
     // localStorage.setItem(`posts`, JSON.stringify(arr))
     savePosts()
 })
-
+//select
 $(`button`)[1].addEventListener(`click`, e=>{
     Array.from($(`.post input[type="checkbox"]`)).map(checkBox=>checkBox.classList.toggle(`hidden`)
     )
     $(`button`)[2].classList.toggle(`hidden`)
     $(`button`)[3].classList.toggle(`hidden`)
 })
-
+//select all
 $(`button`)[2].addEventListener(`click`, e=>{
     let checkboxes = Array.from($(`.post input[type="checkbox"]`))
     let allChecked = checkboxes.every(checkBox=>checkBox.checked)
@@ -54,7 +54,7 @@ $(`button`)[2].addEventListener(`click`, e=>{
     // update button text
     $(`button`)[2].textContent = allChecked? `Select All` : `Unselect All`
 })
-
+//delete
 $(`button`)[3].addEventListener(`click`, e=>{
     Array.from($(`.post`)).filter(post=>post.querySelector(`input[type="checkbox"]:checked`)).map(post=>post.remove())
     savePosts()
