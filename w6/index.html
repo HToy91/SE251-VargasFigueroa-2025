@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://www.google.com" method="get">
+        <input type="text" id="first" class="first" name="first" maxlength="5" minlength="5" required>
+        <span></span>
+        <input type="submit">
+    </form>
+
+    <script>
+        let inputs = document.querySelectorAll(`input`)
+
+        // inputs[1].addEventListener(`click`, e=>{
+        //     if(!inputs[0].checkValidity()){
+        //         inputs[0].nextElementSibling.innerHTML = `Get it right`
+        //         inputs[0].setCustomValidity(`yo`)
+        //     }
+        //     else{
+        //         inputs[0].nextElementSibling.innerHTML = `is cool`
+        //     }
+        // })
+
+        inputs[0].addEventListener(`keyup`, e=>{
+            let pattern = /J{1,3}/ig
+            if(pattern.test(e.target.value)){
+                console.log(`farts`)
+                e.target.style.backgroundColor = `#ffff00`
+            }
+            else{
+                e.target.style.backgroundColor = `#ffffff`
+            }
+            let list = e.target.value.match(pattern)
+            console.log(list)
+        })
+    </script>
+</body>
+</html>
