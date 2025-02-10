@@ -61,6 +61,7 @@ $(`button`)[3].addEventListener(`click`, e=>{
 })
 function savePosts(){
         var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
+        //arr.push(post .outerHTML)
         localStorage.setItem(`posts`, JSON.stringify(arr))
         
     }
