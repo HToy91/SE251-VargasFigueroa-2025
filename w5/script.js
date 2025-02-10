@@ -38,14 +38,14 @@ $(`button`)[0].addEventListener(`click`, e=>{
 })
 //select
 $(`button`)[1].addEventListener(`click`, e=>{
-    Array.from($(`.post input[type="checkbox"]`)).map(checkBox=>checkBox.classList.toggle(`hidden`)
+    Array.from(document.querySelectorAll(`.post input[type="checkbox"]`)).map(checkBox=>checkBox.classList.toggle(`hidden`)
     )
     $(`button`)[2].classList.toggle(`hidden`)
     $(`button`)[3].classList.toggle(`hidden`)
 })
 //select all
 $(`button`)[2].addEventListener(`click`, e=>{
-    let checkboxes = Array.from($(`.post input[type="checkbox"]`))
+    let checkboxes = Array.from(document.querySelectorAll(`.post input[type="checkbox"]`))
     let allChecked = checkboxes.every(checkBox=>checkBox.checked)
     
     //toggle to opposite state(selected or unselected)
@@ -56,11 +56,11 @@ $(`button`)[2].addEventListener(`click`, e=>{
 })
 //delete
 $(`button`)[3].addEventListener(`click`, e=>{
-    Array.from($(`.post`)).filter(post=>post.querySelector(`input[type="checkbox"]:checked`)).map(post=>post.remove())
+    Array.from(document.querySelectorAll(`.post`)).filter(post=>post.querySelector(`input[type="checkbox"]:checked`)).map(post=>post.remove())
     savePosts()
 })
 function savePosts(){
-        var arr = Array.from($(`.post`)).map(value=>value.outerHTML)
+        var arr = Array.from(document.querySelectorAll(`.post`)).map(value=>value.outerHTML)
         //arr.push(post .outerHTML)
         localStorage.setItem(`posts`, JSON.stringify(arr))
         
