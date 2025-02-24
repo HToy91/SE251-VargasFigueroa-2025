@@ -1,6 +1,7 @@
 let fNameInput = document.querySelector(`#first-name`)
 let lNameInput = document.querySelector(`#last-name`)
 let emailInput = document.querySelector(`#email`)
+let confirm_emailInput = document.querySelector(`#confirm-email`)
 let phoneInput = document.querySelector(`#phone`)
 let submit = document.querySelector(`input[type="button"]`)
 let confirmation = document.querySelector(`#confirmation`)
@@ -44,6 +45,12 @@ submit.addEventListener(`click`, e=>{
     if(!emailRegex.test(emailInput.value)){
         emailInput.nextElementSibling.innerHTML = `Invalid Email.`
         emailInput.parentElement.style.color = `red`
+
+        isValid = false
+    }
+    if(emailInput.value != confirm_emailInput.value || !emailRegex.test(confirm_emailInput.value)){
+        confirm_emailInput.nextElementSibling.innerHTML = `Emails don't match.`
+        confirm_emailInput.parentElement.style.color = `red`
 
         isValid = false
     }
