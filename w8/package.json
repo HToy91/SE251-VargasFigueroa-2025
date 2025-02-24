@@ -1,0 +1,22 @@
+{
+  "name": "se251-vargasfigueroa-2025",
+  "version": "1.0.0",
+  "description": "JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HToy91/SE251-VargasFigueroa-2025.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HToy91/SE251-VargasFigueroa-2025/issues"
+  },
+  "homepage": "https://github.com/HToy91/SE251-VargasFigueroa-2025#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
