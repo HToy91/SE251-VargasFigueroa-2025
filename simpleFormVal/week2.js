@@ -7,6 +7,7 @@ let confirmation = document.querySelector(`#confirmation`)
 let info = document.querySelector(`#info`)
 let span = document.querySelectorAll(`span`)
 let inputs = document.querySelectorAll(`input`)
+let form = document.querySelector(`#form`)
 
 submit.addEventListener(`click`, e=>{
     var person = {
@@ -55,6 +56,7 @@ submit.addEventListener(`click`, e=>{
     if(isValid){
         info.innerHTML = `<p>${person.fName} ${person.lName}<br>${person.email}<br>${person.phone.substring(0,3)}-${person.phone.substring(3,6)}-${person.phone.substring(6)}</p>`
         confirmation.style.display = `block`
+        form.style.display = `none`
     }
     else{
         confirmation.style.display = `none`
