@@ -11,7 +11,7 @@
         <input type="text" name="make" value="Chevy"><br>
         <input type="text" name="model" value="Corvette"><br>
         <input type="number" name="year" maxlength="4" value="2010"><br>
-        <button>Submit</button>
+        <button id="submit">Submit</button>
   
     <div id="output">
 
@@ -38,21 +38,36 @@
                 }
 
             //add a button (delete)
+            message += `<button class="delete" data-index="${i}">Delete</button>` //data attrib embeds custom data
             message += `</div>`
         }
 
         output.innerHTML = message
 
         //query select all the buttons
+        let button = document.querySelectorAll(`.delete`)
         //add event listeners to each button
             //send the index number of the button you selected to the `delete` route
             //the object you send could look like this {index:/*correct index number goes here*/}
             //call the load function to update the page
-
+        button.forEach(button => {
+            button.addEventListener(`click`, async (e)=>{
+                const index = Number(e.target.getAttribute("data-index"))//convert index to number
+                await fetch("http://localhost:80/jeep", {
+                    method: "DELETE",
+                    body: JSON.stringify({index}),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+                load()//refresh data
+            })
+        });
+        
     }
 
 
-    document.querySelector(`button`).addEventListener(`click`, async (e)=>{
+    document.querySelector(`#submit`).addEventListener(`click`, async (e)=>{
 
        await fetch("http://localhost:80/jeep", {
     

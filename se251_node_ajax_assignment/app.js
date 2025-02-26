@@ -53,8 +53,21 @@ app.post('/jeep', async (req, res) => {
 app.post('/delete', async (req, res) => { 
   //add the delete functionality here.
   //read in the jeep.json file
+  var oldData = await readFile(`./data/jeep.json`)
+  var newData = await JSON.parse(oldData)
+  
   //splice out the correct index from the array
+  let index = req.body.index
+  newData.splice(index, 1)
+  const jsonString = JSON.stringify(newData)
   //write the file again
+  await fs.writeFile('./data/jeep.json', jsonString, (err) => {
+    if (err) {
+        console.log('Error deleting file', err)
+    } else {
+        console.log('Successfully deleted file')
+    }
+  })
 });
 
 //Start up the server on port 3000.
