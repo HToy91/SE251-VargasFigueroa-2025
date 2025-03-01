@@ -50,7 +50,7 @@ app.post('/jeep', async (req, res) => {
     res.send(jsonString);
 });
 
-app.post('/delete', async (req, res) => { 
+app.delete('/jeep', async (req, res) => { 
   //add the delete functionality here.
   //read in the jeep.json file
   var oldData = await readFile(`./data/jeep.json`)
@@ -58,10 +58,11 @@ app.post('/delete', async (req, res) => {
   
   //splice out the correct index from the array
   let index = req.body.index
-  newData.splice(index, 1)
+  const adjustedIndex = newData.length - 1 - index //was deleting in reverse
+  newData.splice(adjustedIndex, 1)
   const jsonString = JSON.stringify(newData)
   //write the file again
-  await fs.writeFile('./data/jeep.json', jsonString, (err) => {
+  await fs.promises.writeFile('./data/jeep.json', jsonString, (err) => {
     if (err) {
         console.log('Error deleting file', err)
     } else {
